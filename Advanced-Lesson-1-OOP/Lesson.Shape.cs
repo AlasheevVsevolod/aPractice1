@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Advanced_Lesson_1_OOP
 {
-    public static partial class Lesson
+/*    public static partial class Lesson
     {
 
         public static void AbstractionShapeExample()
@@ -87,6 +87,6 @@ namespace Advanced_Lesson_1_OOP
         {
             Console.WriteLine("Drawing Triangle");
         }
-    }
+    }*/
 
 }

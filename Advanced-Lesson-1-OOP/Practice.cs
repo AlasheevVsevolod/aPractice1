@@ -14,9 +14,26 @@ namespace Advanced_Lesson_1_OOP
         /// </summary>
         public static void A_L1_P1_OOP()
         {
-            var newCircle = new Circle();
-            var newSquare = new Square();
-            var newTriangle = new Triangle();
+            double[,] areaArr = new double[3, 10];
+            for (int i = 0; i < areaArr.GetLength(1); i++)
+            {
+                var newCircle = new Circle(i + 1);
+                var newSquare = new Square(i + 1);
+                var newTriangle = new Triangle(i + 1);
+
+                areaArr[0, i] = newCircle.AreaCalc();
+                areaArr[1, i] = newSquare.AreaCalc();
+                areaArr[2, i] = newTriangle.AreaCalc();
+            }
+
+            for (int i = 0; i < areaArr.GetLength(0); i++)
+            {
+                for (int j = 0; j < areaArr.GetLength(1); j++)
+                {
+                    Console.Write($"{areaArr[i, j]:n3} ");
+                }
+                Console.WriteLine();
+            }
         }
 
 
@@ -39,10 +56,6 @@ namespace Advanced_Lesson_1_OOP
 
     public class Figure
     {
-        public virtual void Draw()
-        {
-            throw new NotImplementedException();
-        }
         public virtual double AreaCalc()
         {
             throw new NotImplementedException();
@@ -52,37 +65,44 @@ namespace Advanced_Lesson_1_OOP
     public class Circle: Figure
     {
         private int radius;
-        public override void Draw()
+
+        public Circle(int radius)
         {
-            Console.WriteLine("This is cirlce");
+            this.radius = radius;
         }
+
         public override double AreaCalc()
         {
-            return Math.PI * (radius ^ 2);
+            return Math.PI * Math.Pow(radius, 2);
         }
     }
 
     class Square : Figure
     {
-        public void Draw()
+        private int side;
+        public Square(int side)
         {
-            Console.WriteLine("This is square");
+            this.side = side;
         }
-        double AreaCalc(int side)
+
+        public override double AreaCalc()
         {
-            return side ^ 2;
+            return Math.Pow(side, 2);
         }
     }
 
     class Triangle : Figure
     {
-        public void Draw()
+        private int side;
+
+        public Triangle(int side)
         {
-            Console.WriteLine("This is triangle");
+            this.side = side;
         }
-        double AreaCalc(int side)
+
+        public override double AreaCalc()
         {
-            return side ^ 2;
+            return Math.Pow(side, 2) * Math.Sin(60 * Math.PI / 180) / 2;
         }
     }
 

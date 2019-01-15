@@ -56,6 +56,54 @@ namespace Advanced_Lesson_1_OOP
             base.Move(km);
             this.Fuel -= km * FuelUsage / 100;
         }
+
+        public static bool operator <(FuelCar car1, FuelCar car2)
+        {
+            if (car1.Engine < car2.Engine)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static bool operator >(FuelCar car1, FuelCar car2)
+        {
+            if (car1.Engine > car2.Engine)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static bool operator ==(FuelCar car1, FuelCar car2)
+        {
+            if (car1.Engine == car2.Engine)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static bool operator !=(FuelCar car1, FuelCar car2)
+        {
+            if (car1.Engine != car2.Engine)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 
     public class ElectroCar : Car

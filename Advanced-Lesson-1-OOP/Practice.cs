@@ -38,11 +38,29 @@ namespace Advanced_Lesson_1_OOP
 
 
         /// <summary>
-        /// A.L1.P6. Перегрузить следующие операторы для Transport <>,==/!= на базе физических размеров. 
-        /// Продемонстрировать использование в коде. 
+        /// A.L1.P5. Перегрузить следующие операторы для FuelCar < (меньше), > (больше), == (равно),
+        /// != (неравно) на базе значения мощности двигателя Engine.Продемонстрировать использование в коде.
         /// </summary>
-        public static void A_L1_P6_OperatorsOverloading()
+        public static void A_L1_P5_6_CarOperatorsOverloading()
         {
+            FuelCar car1 = new FuelCar()
+            {
+                Engine = 100
+            };
+
+            FuelCar car2 = new FuelCar()
+            {
+                Engine = 150
+            };
+
+            Console.WriteLine(car1 < car2 ? "Car 1 has smaller engine": "Car 2 has greater engine");
+            car1.Engine = 200;
+            Console.WriteLine(car1 > car2 ? "Car 1 has greater engine" : "Car 2 has smaller engine");
+
+            Console.WriteLine(car1 == car2 ? "Cars have the same engine" : "Cars have different engines");
+
+            car1.Engine = 150;
+            Console.WriteLine(car1 != car2 ? "Cars have different engines" : "Cars have the same engine");
         }
 
         /// <summary>

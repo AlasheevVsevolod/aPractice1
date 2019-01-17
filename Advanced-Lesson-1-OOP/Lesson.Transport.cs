@@ -59,50 +59,22 @@ namespace Advanced_Lesson_1_OOP
 
         public static bool operator <(FuelCar car1, FuelCar car2)
         {
-            if (car1.Engine < car2.Engine)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return car1.Engine < car2.Engine;
         }
 
         public static bool operator >(FuelCar car1, FuelCar car2)
         {
-            if (car1.Engine > car2.Engine)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return car1.Engine > car2.Engine;
         }
 
         public static bool operator ==(FuelCar car1, FuelCar car2)
         {
-            if (car1.Engine == car2.Engine)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return car1.Engine == car2.Engine;
         }
 
         public static bool operator !=(FuelCar car1, FuelCar car2)
         {
-            if (car1.Engine != car2.Engine)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return car1.Engine != car2.Engine;
         }
     }
 

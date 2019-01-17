@@ -14,23 +14,19 @@ namespace Advanced_Lesson_1_OOP
         /// </summary>
         public static void A_L1_P1_OOP()
         {
-            double[,] areaArr = new double[3, 10];
+            Figure[,] areaArr = new Figure[3, 10];
             for (int i = 0; i < areaArr.GetLength(1); i++)
             {
-                var newCircle = new Circle(i + 1);
-                var newSquare = new Square(i + 1);
-                var newTriangle = new Triangle(i + 1);
-
-                areaArr[0, i] = newCircle.AreaCalc();
-                areaArr[1, i] = newSquare.AreaCalc();
-                areaArr[2, i] = newTriangle.AreaCalc();
+                areaArr[0, i] = new Circle(i + 1);
+                areaArr[1, i] = new Square(i + 1);
+                areaArr[2, i] = new Triangle(i + 1);
             }
 
             for (int i = 0; i < areaArr.GetLength(0); i++)
             {
                 for (int j = 0; j < areaArr.GetLength(1); j++)
                 {
-                    Console.Write($"{areaArr[i, j]:n3} ");
+                    Console.Write($"{areaArr[i, j].AreaCalc():n3} ");
                 }
                 Console.WriteLine();
             }

@@ -14,18 +14,49 @@ namespace Advanced_Lesson_1_OOP
         /// </summary>
         public static void A_L1_P1_OOP()
         {
-            var newCircle = new Circle();
-            var newSquare = new Square();
-            var newTriangle = new Triangle();
+            Figure[,] areaArr = new Figure[3, 10];
+            for (int i = 0; i < areaArr.GetLength(1); i++)
+            {
+                areaArr[0, i] = new Circle(i + 1);
+                areaArr[1, i] = new Square(i + 1);
+                areaArr[2, i] = new Triangle(i + 1);
+            }
+
+            for (int i = 0; i < areaArr.GetLength(0); i++)
+            {
+                for (int j = 0; j < areaArr.GetLength(1); j++)
+                {
+                    Console.Write($"{areaArr[i, j].AreaCalc():n3} ");
+                }
+                Console.WriteLine();
+            }
         }
 
 
         /// <summary>
-        /// A.L1.P6. Перегрузить следующие операторы для Transport <>,==/!= на базе физических размеров. 
-        /// Продемонстрировать использование в коде. 
+        /// A.L1.P5. Перегрузить следующие операторы для FuelCar < (меньше), > (больше), == (равно),
+        /// != (неравно) на базе значения мощности двигателя Engine.Продемонстрировать использование в коде.
         /// </summary>
-        public static void A_L1_P6_OperatorsOverloading()
+        public static void A_L1_P5_6_CarOperatorsOverloading()
         {
+            FuelCar car1 = new FuelCar()
+            {
+                Engine = 100
+            };
+
+            FuelCar car2 = new FuelCar()
+            {
+                Engine = 150
+            };
+
+            Console.WriteLine(car1 < car2 ? "Car 1 has smaller engine": "Car 2 has greater engine");
+            car1.Engine = 200;
+            Console.WriteLine(car1 > car2 ? "Car 1 has greater engine" : "Car 2 has smaller engine");
+
+            Console.WriteLine(car1 == car2 ? "Cars have the same engine" : "Cars have different engines");
+
+            car1.Engine = 150;
+            Console.WriteLine(car1 != car2 ? "Cars have different engines" : "Cars have the same engine");
         }
 
         /// <summary>
@@ -39,10 +70,6 @@ namespace Advanced_Lesson_1_OOP
 
     public class Figure
     {
-        public virtual void Draw()
-        {
-            throw new NotImplementedException();
-        }
         public virtual double AreaCalc()
         {
             throw new NotImplementedException();
@@ -52,37 +79,44 @@ namespace Advanced_Lesson_1_OOP
     public class Circle: Figure
     {
         private int radius;
-        public override void Draw()
+
+        public Circle(int radius)
         {
-            Console.WriteLine("This is cirlce");
+            this.radius = radius;
         }
+
         public override double AreaCalc()
         {
-            return Math.PI * (radius ^ 2);
+            return Math.PI * Math.Pow(radius, 2);
         }
     }
 
     class Square : Figure
     {
-        public void Draw()
+        private int side;
+        public Square(int side)
         {
-            Console.WriteLine("This is square");
+            this.side = side;
         }
-        double AreaCalc(int side)
+
+        public override double AreaCalc()
         {
-            return side ^ 2;
+            return Math.Pow(side, 2);
         }
     }
 
     class Triangle : Figure
     {
-        public void Draw()
+        private int side;
+
+        public Triangle(int side)
         {
-            Console.WriteLine("This is triangle");
+            this.side = side;
         }
-        double AreaCalc(int side)
+
+        public override double AreaCalc()
         {
-            return side ^ 2;
+            return Math.Pow(side, 2) * Math.Sin(60 * Math.PI / 180) / 2;
         }
     }
 
